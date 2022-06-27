@@ -1,0 +1,94 @@
+body{
+    overflow: hidden;
+}
+
+.main_div{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(216, 202, 202);
+    display: grid;
+    place-items: center;
+}
+.music_container{
+    width: 350px;
+    height: 550px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 1.2rem 3rem 0.5rem black;
+    padding: 30px;
+    text-align: center;
+    /* align-items: center; */
+}
+.music_container #title{
+    font-family: 'Sansita Swashed', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    word-spacing: 0.5rem;
+    color: red;
+    margin: 20px 0 0.5rem 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+    /* text-shadow: 0 0.3rem 10px black; */
+}
+.music_container #artist{
+    color: rgb(167, 131, 131);
+}
+.img_container{
+    width: 25rem;
+    height: 25rem;
+    margin: auto;
+}
+img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: 0 12px 30px 5px black;
+    position: relative;
+    left: -21px;
+    top: 20px;
+    object-fit: cover;
+}
+.music_controls{
+    width: 13rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: -55px;
+    position: relative;
+    /* bottom: 100px; */
+}
+.music_controls .fas{
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    filter: drop-shadow(0 12px 30px 5px black);
+
+}
+.music_controls .fas:hover{
+    color: gray;
+}
+.music_controls .main_button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #111;
+    color: white;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.music_controls .fa-play:hover{
+    background-color: white;
+    color: black;
+    box-shadow: 0 10px 20px 2px black;
+}
+.anime{
+    animation: rotate 10s linear infinite;
+
+}
+@keyframes rotate {
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}

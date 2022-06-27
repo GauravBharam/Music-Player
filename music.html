@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">Zara Sa</h2>
+            <h3 id="artist">KK</h3>
+            <div class="img_container">
+                <img src="/Images/kk1.jpg" alt="">
+            </div>
+            <audio src="/Music/kk1.mp3" controls hidden></audio>
+
+            <!-- controls -->
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play main_button" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+            <script>
+                let img = document.querySelector('img');
+                let music = document.querySelector('audio');
+                let play = document.getElementById('play');
+                let artist = document.getElementById('artist');
+                let title = document.getElementById('title');
+                let prev = document.getElementById('prev');
+                let next = document.getElementById('next');
+
+                let songs = [
+                    {
+                        name: 'kk1',
+                        title: "Zara Sa",
+                        artist: "KK",
+                    },
+
+                    {
+                        name: 'sallu1',
+                        title: "Jane Jana",
+                        artist: "Kamaal Khan",
+                    },
+
+                    {
+                        name: 'siddhu1',
+                        title: "So High",
+                        artist: "Siddhu Moosewala"
+                    }
+                ];
+
+
+                // play.addEventListener('click' ,()=>{
+                //     music.play();
+                //     play.classList.replace("fa-play" , "fa-pause");
+                //     img.classList.add('anime');
+                // })
+
+                let isPlaying = false;
+                // play
+                const playMusic = () => {
+                    isPlaying = true;
+                    music.play();
+                    play.classList.replace("fa-play", "fa-pause");
+                    img.classList.add("anime");
+                };
+                // pause
+                const pauseMusic = () => {
+                    isPlaying = false;
+                    music.pause();
+                    play.classList.replace("fa-pause", "fa-play")
+                    img.classList.remove("anime");
+                };
+
+                play.addEventListener('click', () => {
+                    if (isPlaying) {
+                        pauseMusic();
+                    }
+                    else {
+                        playMusic();
+                    }
+                });
+
+
+                // data change 
+                let loadSong = (songs) => {
+                    title.textContent = songs.title;
+                    artist.textContent = songs.artist;
+                    music.src = "Music/" + songs.name + ".mp3";
+                    img.src = "Images/" + songs.name + ".jpg";
+                }
+                songIndex = 0;
+                // loadSong(songs[2]);
+
+                // next
+                let nextSong = () => {
+                    songIndex = (songIndex + 1) % songs.length;
+                    loadSong(songs[songIndex]);
+                    playMusic();
+                }
+
+                let prevSong = () => {
+                    songIndex = (songIndex - 1 + songs.length) % songs.length;
+                    loadSong(songs[songIndex]);
+                    playMusic();
+                }
+
+                next.addEventListener('click', nextSong)
+                prev.addEventListener('click', prevSong)
+
+
+            </script>
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>
